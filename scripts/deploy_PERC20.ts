@@ -1,5 +1,5 @@
 import { ethers, network, run } from "hardhat";
-import { saveContract } from "./util";
+import { saveContract, sleep } from "./util";
 
 (async function main() {
     const networkName = network.name;
@@ -10,6 +10,10 @@ import { saveContract } from "./util";
 
     console.log(`Deploy PERC20 token at address ${perc20.address}`);
     await saveContract(networkName, 'PERC20', perc20.address);
+
+    console.log('Sleeping for 10s for backend synchronized');
+
+    await sleep(10000);
 
     console.log(`Start verifying contract`);
     await run('verify:verify', {

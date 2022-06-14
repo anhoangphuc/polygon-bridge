@@ -18,3 +18,7 @@ export function getContracts(): any {
     }   
     return JSON.parse(json);
 }
+
+export function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}

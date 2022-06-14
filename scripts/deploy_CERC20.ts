@@ -1,6 +1,6 @@
 import { ethers, network, run } from "hardhat";
 import { MUMBAI_CHAIN_MANAGER } from "./constants";
-import { saveContract } from "./util";
+import { saveContract, sleep } from "./util";
 
 (async function main() {
     const networkName = network.name;
@@ -12,7 +12,10 @@ import { saveContract } from "./util";
     console.log(`Deploy CERC20 token at address ${cerc20.address}`);
     await saveContract(networkName, 'CERC20', cerc20.address);
 
-    console.log(`Start verifying contract`);
+    console.log('Sleeping for 10s for backend synchronized');
+
+    await sleep(10000);
+    console.log(`Start verefying contract`);
     await run('verify:verify', {
         address: cerc20.address,
         constructorArguments: [MUMBAI_CHAIN_MANAGER],
