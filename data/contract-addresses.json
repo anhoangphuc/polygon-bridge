@@ -1,5 +1,8 @@
 {
     "goerli": {
         "PERC20": "0x737eEEd9fF33618d1F56357e9549f9E814024804"
+    },
+    "polygon": {
+        "CERC20": "0x32c194C2dE2846E0fb1630E3d538e842Cf12208B"
     }
 }
