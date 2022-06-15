@@ -22,7 +22,16 @@ async function approve(posClient: POSClient, amount: string) {
     console.log(`Allowance2 is ${allowance2}`);
 }
 
+async function deposit(posClient: POSClient, amount: string) {
+    const derc20Token = posClient.erc20(derc20Address, true);
+    console.log(`Old allowance is ${await derc20Token.getAllowance(address)}`);
+    const depositTx = await derc20Token.deposit(amount, address);
+    console.log(`Txhash of depositTx is ${await depositTx.getTransactionHash()} and receipt is ${await depositTx.getReceipt()}`);
+    console.log(`New allowance is ${await derc20Token.getAllowance(address)}`);
+}
+
 (async function main() {
     const posClient = await getPosClient();    
-    await approve(posClient, '50');
+    //await approve(posClient, '50');
+    await deposit(posClient, '50');
 })();
