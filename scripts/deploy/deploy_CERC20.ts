@@ -1,6 +1,6 @@
 import { ethers, network, run } from "hardhat";
-import { MUMBAI_CHAIN_MANAGER } from "./constants";
-import { saveContract, sleep } from "./util";
+import { MUMBAI_CHAIN_MANAGER } from "../constants";
+import { saveContract, sleep } from "../util";
 
 (async function main() {
     const networkName = network.name;

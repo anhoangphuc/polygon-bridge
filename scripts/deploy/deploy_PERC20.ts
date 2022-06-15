@@ -1,5 +1,5 @@
 import { ethers, network, run } from "hardhat";
-import { saveContract, sleep } from "./util";
+import { saveContract, sleep } from "../util";
 
 (async function main() {
     const networkName = network.name;
