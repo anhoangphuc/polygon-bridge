@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@maticnetwork/maticjs": "^3.3.0",
+    "@maticnetwork/maticjs-ethers": "^1.0.2",
     "@openzeppelin/contracts": "^4.6.0"
   }
 }

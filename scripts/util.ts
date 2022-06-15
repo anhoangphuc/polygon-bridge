@@ -1,7 +1,10 @@
-import { POSClient } from '@maticnetwork/maticjs';
+import { POSClient, use } from '@maticnetwork/maticjs';
 import { providers, Wallet } from 'ethers';
 import fs from 'fs';
 import path from 'path';
+import { Web3ClientPlugin } from '@maticnetwork/maticjs-ethers';
+
+use(Web3ClientPlugin);
 
 export async function saveContract(network: string, contract: string, address: string) {
     const addresses = await getContracts();
@@ -27,11 +30,11 @@ export function sleep(ms: number): Promise<void> {
 
 export const goerliProvider = new providers.JsonRpcProvider(process.env.GOERLI_URL);
 export const polygonProvider = new providers.JsonRpcProvider(process.env.POLYGON_URL);
+export const address = process.env.ADDRESS || '';
 
 export async function getPosClient(): Promise<POSClient> {
     const posClient = new POSClient();
     const privateKey = process.env.PRIVATE_KEY || '';
-    const address = process.env.ADDRESS || '';
     await posClient.init({
         network: 'testnet',
         version: 'mumbai',
