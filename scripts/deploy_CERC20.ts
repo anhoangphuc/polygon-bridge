@@ -12,9 +12,9 @@ import { saveContract, sleep } from "./util";
     console.log(`Deploy CERC20 token at address ${cerc20.address}`);
     await saveContract(networkName, 'CERC20', cerc20.address);
 
-    console.log('Sleeping for 10s for backend synchronized');
+    console.log('Sleeping for 60s for backend synchronized');
 
-    await sleep(10000);
+    await sleep(60000);
     console.log(`Start verefying contract`);
     await run('verify:verify', {
         address: cerc20.address,

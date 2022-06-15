@@ -9,11 +9,11 @@ import { saveContract, sleep } from "./util";
     await perc20.deployed();
 
     console.log(`Deploy PERC20 token at address ${perc20.address}`);
-    await saveContract(networkName, 'PERC20', perc20.address);
+    await saveContract(networkName, 'PERC20_2', perc20.address);
 
-    console.log('Sleeping for 10s for backend synchronized');
+    console.log('Sleeping for 60s for backend synchronized');
 
-    await sleep(10000);
+    await sleep(60000);
 
     console.log(`Start verifying contract`);
     await run('verify:verify', {
