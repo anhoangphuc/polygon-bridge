@@ -31,7 +31,7 @@ const config: HardhatUserConfig = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     polygon: {
-      url: "https://rpc-mumbai.maticvigil.com",
+      url: process.env.POLYGON_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     }
@@ -41,8 +41,8 @@ const config: HardhatUserConfig = {
     currency: "USD",
   },
   etherscan: {
-    //apiKey: process.env.ETHERSCAN_API_KEY,
-    apiKey: process.env.POLYGON_API_KEY,
+    apiKey: process.env.ETHERSCAN_API_KEY,
+    //apiKey: process.env.POLYGON_API_KEY,
   },
 };
 
