@@ -44,9 +44,12 @@ async function isCheckpointed(posClient: POSClient, txHash: string) {
     console.log(`tx ${txHash} is ${isCheckpoint ? '': 'not '} checkpointed`);
 }
 
-async function withdrawExit(posClient: POSClient, amount: string) {
-    const derc20Token = posClient.erc20(derc20AddressParent);
+async function withdrawExit(posClient: POSClient, txHash: string) {
+    const derc20Token = posClient.erc20(derc20AddressParent, true);
     console.log(`Old balance is ${await derc20Token.getBalance(address)}`);
+    const withdrawTx = await derc20Token.withdrawExit(txHash);
+    console.log(`Withdraw tx hash is ${await withdrawTx.getTransactionHash()} and receipt is ${await withdrawTx.getReceipt()}`);
+    console.log(`New balance is ${await derc20Token.getBalance(address)}`);
 }
 
 
@@ -54,6 +57,7 @@ async function withdrawExit(posClient: POSClient, amount: string) {
     const posClient = await getPosClient();    
     //await approve(posClient, '50');
     //await deposit(posClient, '50');
-    await isCheckpointed(posClient, '0xb9174160122b1c1fc295c5aeb1c324c8eff26f9dac585cf4b83b12f797ca78e3');
     //await withdrawStart(posClient, '100');
+    //await isCheckpointed(posClient, '0xb9174160122b1c1fc295c5aeb1c324c8eff26f9dac585cf4b83b12f797ca78e3');
+    await withdrawExit(posClient,  '0xb9174160122b1c1fc295c5aeb1c324c8eff26f9dac585cf4b83b12f797ca78e3');
 })();
